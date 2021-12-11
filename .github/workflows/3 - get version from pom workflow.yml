@@ -13,7 +13,6 @@ defaults:
 #lista de trabajos a realizar
 jobs:
 
-    #Job a ejecutar 
     get-version:
         #Máquina en la que se va a ejecutar el job 
         runs-on: ubuntu-latest
