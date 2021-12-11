@@ -1,11 +1,19 @@
+#Nombre del workflow
 name: Execute echo command
  
+#Evento que desencadenará el workflow
 on: [push]
 
+#lista de trabajos a realizar
 jobs:
+ 
+ #Job a ejecutar
  echo:
+   #Máquina en la que se va a ejecutar el job 
    runs-on: ubuntu-latest
  
+   #Lista de steps/tareas a realizar dentro del job
    steps:
+     #Tarea a ejecutar. Tiene un name con la descripción y un run con el comando a ejecutar.
      - name: test echo
        run: echo "Testing echo"
