@@ -1,0 +1,12 @@
+name: Get version from pom.xml - env
+ 
+on: [push]
+
+jobs:
+ get-version:
+   runs-on: ubuntu-latest
+ 
+   steps:
+
+     - name: Show extracted  Maven project version
+       run: echo "Version is ${{ env.RELEASE_VERSION }}"

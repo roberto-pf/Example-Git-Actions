@@ -1,4 +1,4 @@
-name: Get version from pom.xml
+name: Get version from pom.xml - env
  
 on: [push]
 
@@ -22,5 +22,12 @@ jobs:
      - name: Extract Maven project version
        run: echo "RELEASE_VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_ENV
 
+     - name: Show extracted  Maven project version
+       run: echo "Version is ${{ env.RELEASE_VERSION }}"
+       
+use-version:
+    runs-on: ubuntu-latest
+ 
+   steps:
      - name: Show extracted  Maven project version
        run: echo "Version is ${{ env.RELEASE_VERSION }}"
