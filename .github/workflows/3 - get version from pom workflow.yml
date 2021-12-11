@@ -1,38 +1,58 @@
+#Nombre del workflow
 name: Get version from pom.xml
  
+#Evento que desencadenará el workflow
 on: [push]
 
+#Configuración por defecto.
 defaults:
     run:
+    	#Se indica el directorio desde donde se ejecutarán los jobs.
         working-directory: example1-gitactions
-
+        
+#lista de trabajos a realizar
 jobs:
+    #Job a ejecutar
     get-version:
+    	#Máquina en la que se va a ejecutar el job 
         runs-on: ubuntu-latest
+        #Lista de variables de salida del job
         outputs:
             output_version: ${{ steps.project_version.outputs.version }}
-            
+           
+        #Lista de steps/tareas a realizar dentro del job 
         steps:
-
+	    #Tarea que hace un checkout del repositorio
             - uses: actions/checkout@v2
-
+	    #Tarea que instala en la máquina java 11
             - name: Set up JDK 1.11
               uses: actions/setup-java@v1
               with:
                 java-version: 1.11
-         
+            #Tarea extrae a la variable version, la version existente en el pom.xml
             - name: Extract Maven project version
               run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+              #identificador asignado a la tarea
               id: project_version
-
+	    #Tarea que hace un echo de la variable creada en la tarea anterior
             - name: Show extracted  Maven project version
               run: echo "Version is ${{ steps.project_version.outputs.version }}"
-       
+              
+    #Job a ejecutar   
     use-version:
+    	#Se indica que este job va a depender del anterior. Es decir, se va a ejecutar el otro primero.
         needs: get-version
+        #Máquina en la que se va a ejecutar el job 
         runs-on: ubuntu-latest
- 
+ 	
+ 	#Lista de steps/tareas a realizar dentro del job
         steps:
+            #Tarea que hace un checkout del repositorio
             - uses: actions/checkout@v2
+            #Tarea que hace un echo de la variable creada en el job anterior
             - name: Show extracted  Maven project version
               run: echo "Version is ${{ needs.get-version.outputs.output_version }}"
+              
+     
+     - name: Build with Maven
+       run: mvn -B package --file pom.xml
