@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DummyRestController {
 
-	@GetMapping(value = "hello")
+	@GetMapping(value = "dummy")
 	public String dummy() {
 	    return "ok";
-	 }    
+	}    
 }
