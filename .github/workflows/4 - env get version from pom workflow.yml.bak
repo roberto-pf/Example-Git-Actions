@@ -9,6 +9,8 @@ defaults:
 jobs:
  get-version-env:
     runs-on: ubuntu-latest
+    env: 
+       RELEASE_VERSION: ${{ env.RELEASE_VERSION }}
  
     steps:
 
