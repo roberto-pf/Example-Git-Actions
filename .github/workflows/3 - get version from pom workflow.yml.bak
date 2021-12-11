@@ -35,4 +35,4 @@ jobs:
         steps:
                 
             - name: Show extracted  Maven project version
-              run: echo "Version is ${{ needs.get-version.steps.outputs.output_version }}"
+              run: echo "Version is ${{ needs.get-version.outputs.output_version }}"
