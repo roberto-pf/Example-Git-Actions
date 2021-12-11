@@ -10,7 +10,7 @@ jobs:
  get-version-env:
     runs-on: ubuntu-latest
     env: 
-       RELEASE_VERSION: ${{ env.GITHUB_RELEASE_VERSION }}
+       RELEASE_VERSION: ""
  
     steps:
 
