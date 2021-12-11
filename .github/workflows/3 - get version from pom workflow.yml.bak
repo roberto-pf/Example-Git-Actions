@@ -25,3 +25,10 @@ jobs:
 
      - name: Show extracted  Maven project version
        run: echo "Version is ${{ steps.project.outputs.version }}"
+       
+ use-version:
+    runs-on: ubuntu-latest
+ 
+   steps:
+      - name: Show extracted  Maven project version
+       run: echo "Version is ${{ steps.project.outputs.version }}"
