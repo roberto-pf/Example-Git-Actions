@@ -7,7 +7,7 @@ defaults:
   working-directory: example1-gitactions
 
 jobs:
- build:
+ get-version:
    runs-on: ubuntu-latest
  
    steps:
