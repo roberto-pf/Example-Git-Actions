@@ -1,5 +1,6 @@
 - Exposed endpoint:
-	http://localhost:8080/dummy
+	- http://localhost:8080/dummy
+	
 	
 - Tarea Git Action
-	when doing a commit it makes an echo
+	- when doing a commit it makes an echo
