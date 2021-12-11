@@ -9,7 +9,9 @@ defaults:
 jobs:
     get-version:
         runs-on: ubuntu-latest
- 
+        outputs:
+            output_version: ${{ steps.project.outputs.version }}
+            
         steps:
 
             - uses: actions/checkout@v2
@@ -40,4 +42,4 @@ jobs:
                 java-version: 1.11
                 
             - name: Show extracted  Maven project version
-              run: echo "Version is ${{ needs.get-version.steps.project.outputs.version }}"
+              run: echo "Version is ${{ needs.get-version.steps.outputs.output_version }}"
