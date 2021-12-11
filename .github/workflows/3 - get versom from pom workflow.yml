@@ -24,4 +24,4 @@ jobs:
        id: project
 
      - name: Show extracted Maven project version
-       run: echo "Get Version: ${{ steps.project.outputs.version }} "
+       run: echo ${{ steps.project.outputs.version }}
