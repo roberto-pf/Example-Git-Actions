@@ -6,11 +6,13 @@ defaults:
  run:
   working-directory: example1-gitactions
 
+env: 
+  GITHUB_RELEASE_VERSION: "prueba"
+      
 jobs:
  get-version-env:
     runs-on: ubuntu-latest
-    env: 
-       GITHUB_RELEASE_VERSION: "prueba"
+
  
     steps:
 

@@ -10,7 +10,7 @@ jobs:
  get-version-env:
     runs-on: ubuntu-latest
     env: 
-       GITHUB_RELEASE_VERSION: ""
+       GITHUB_RELEASE_VERSION: "prueba"
  
     steps:
 
@@ -40,4 +40,4 @@ jobs:
           java-version: 1.11
           
       - name: Show extracted  Maven project version
-        run: echo "Version is ${{ needs.get-version-env.env.GITHUB_RELEASE_VERSION }}"
+        run: echo "Version is ${{ env.GITHUB_RELEASE_VERSION }}"
