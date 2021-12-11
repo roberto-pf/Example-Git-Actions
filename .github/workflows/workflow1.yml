@@ -13,6 +13,6 @@ jobs:
        with:
          java-version: 1.11
      - name: cd in example 1
-        run: cd example1-gitactions
+         run: cd example1-gitactions
      - name: Build with Maven
-       run: mvn -B package --file pom.xml
+         run: mvn -B package --file pom.xml
