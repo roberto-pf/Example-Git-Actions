@@ -7,7 +7,7 @@ defaults:
   working-directory: example1-gitactions
 
 jobs:
- get-version:
+ get-version-env:
     runs-on: ubuntu-latest
  
     steps:
@@ -26,7 +26,7 @@ jobs:
         run: echo "Version is ${{ env.RELEASE_VERSION }}"
        
  use-version:
-    needs: get-version
+    needs: get-version-env
     runs-on: ubuntu-latest
  
     steps:
@@ -38,4 +38,4 @@ jobs:
           java-version: 1.11
           
       - name: Show extracted  Maven project version
-        run: echo "Version is ${{ jobs.get-version.env.RELEASE_VERSION }}"
+        run: echo "Version is ${{ needs.get-version-env.env.RELEASE_VERSION }}"
